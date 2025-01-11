@@ -1,0 +1,45 @@
+def calcular_volumen_ingredientes (cant_agua_tazas, cant_harina_tazas, cant_sal_cdtas, cant_aceite_cdas):
+    if cant_agua_tazas < 0 or cant_harina_tazas < 0 or cant_sal_cdtas < 0 or cant_aceite_cdas < 0:
+        return None
+    
+    cda_a_cc = 14.79
+    cdta_a_cc = 4.93
+    tza_a_cc = 236.59
+
+    volumen_agua = cant_agua_tazas * tza_a_cc
+    volumen_harina = cant_harina_tazas * tza_a_cc
+    volumen_sal = cant_sal_cdtas * cdta_a_cc
+    volumen_aceite = cant_aceite_cdas * cda_a_cc
+
+    Volumen_arepa = volumen_agua + volumen_harina + volumen_sal + volumen_aceite
+
+    volumen_10 = (10*(volumen_agua + volumen_harina + volumen_sal + volumen_aceite))/100
+
+    volumen_total = Volumen_arepa - volumen_10
+    return volumen_total
+
+def main():
+
+    while True:
+      try:
+        cant_agua_tazas = float(input("Ingrese la cantidad de agua en tazas: "))
+        cant_harina_tazas = float(input("Ingrese la cantidad de harina en tazas: "))
+        cant_sal_cdtas = float(input("Ingrese la cantidad de sal en cucharaditas: "))
+        cant_aceite_cdas = float(input("Ingrese la cantidad de aceite en cucharadas: "))
+        break
+      except ValueError:
+        print("Por favor, ingrese valores numéricos válidos.")
+
+    volumen_ingredientes = calcular_volumen_ingredientes(cant_agua_tazas, cant_harina_tazas, cant_sal_cdtas, cant_aceite_cdas)
+    
+
+    if volumen_ingredientes is None:
+        print("Por favor, ingrese valores positivos para las cantidades de ingredientes.")
+        return
+    
+    print (f"El volumen de la arepa cocida (considerando la evaporación) es: {volumen_ingredientes:.2f} cc")
+
+
+   
+if __name__ == "__main__":
+    main()
